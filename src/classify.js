@@ -43,7 +43,7 @@ function newArray(color, outputName) {
   arr.green = Math.round(Number(colorNumber[1]));
   arr.blue = Math.round(Number(colorNumber[2]));
   arr.file = outputName;
-  arr.label = 'T';
+  arr.label = 'NT';
 
   return arr;
 }
@@ -112,9 +112,9 @@ async function getMucosa(imageFolder, imageName) {
   ]);
 
   try {
-    const options = { score: 0.2, iou: 0.5, topk: 20 };
+    const options = { score: 0.25, iou: 0.5, topk: 20 };
     const predictions = await model.detect(tensor, options);
-    console.log(predictions);
+    console.log(imageName, predictions);
 
     predictions.length > 0 &&
       cropImage(
